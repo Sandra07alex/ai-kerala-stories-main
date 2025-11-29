@@ -1,0 +1,667 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Kerala-inspired palette */
+    --coconut-white: 40 20% 97%;
+    --kerala-green: 152 32% 55%;
+    --kerala-green-dark: 152 32% 40%;
+    --backwater-blue: 204 76% 81%;
+    --backwater-blue-deep: 204 60% 60%;
+    --soft-sand: 35 36% 85%;
+    --soft-sand-dark: 35 30% 70%;
+    --ink-black: 0 0% 10%;
+    --sunrise-gold: 40 90% 60%;
+    --sunrise-orange: 25 95% 55%;
+    --sunset-purple: 280 40% 70%;
+    --firefly: 55 100% 70%;
+
+    /* Semantic tokens */
+    --background: var(--coconut-white);
+    --foreground: var(--ink-black);
+
+    --card: 40 20% 98%;
+    --card-foreground: var(--ink-black);
+
+    --popover: 40 20% 98%;
+    --popover-foreground: var(--ink-black);
+
+    --primary: var(--kerala-green);
+    --primary-foreground: 40 20% 98%;
+
+    --secondary: var(--backwater-blue);
+    --secondary-foreground: var(--ink-black);
+
+    --muted: var(--soft-sand);
+    --muted-foreground: 0 0% 35%;
+
+    --accent: var(--sunrise-gold);
+    --accent-foreground: var(--ink-black);
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 35 20% 85%;
+    --input: 35 20% 85%;
+    --ring: var(--kerala-green);
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-sunrise: linear-gradient(135deg, hsl(var(--sunrise-gold)), hsl(var(--sunrise-orange)));
+    --gradient-backwater: linear-gradient(180deg, hsl(var(--backwater-blue)), hsl(var(--kerala-green) / 0.3));
+    --gradient-night: linear-gradient(180deg, hsl(222 47% 11%), hsl(220 50% 20%));
+    --gradient-sand: linear-gradient(180deg, hsl(var(--coconut-white)), hsl(var(--soft-sand)));
+    --gradient-hero-dark: linear-gradient(180deg, hsl(220 50% 8%), hsl(220 40% 15%));
+    --gradient-kerala: linear-gradient(135deg, hsl(var(--kerala-green)), hsl(var(--backwater-blue)));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(var(--ink-black) / 0.1);
+    --shadow-card: 0 8px 30px -8px hsl(var(--ink-black) / 0.12);
+    --shadow-glow-green: 0 0 40px hsl(var(--kerala-green) / 0.3);
+    --shadow-glow-gold: 0 0 30px hsl(var(--sunrise-gold) / 0.4);
+
+    /* Sidebar defaults */
+    --sidebar-background: var(--coconut-white);
+    --sidebar-foreground: var(--ink-black);
+    --sidebar-primary: var(--kerala-green);
+    --sidebar-primary-foreground: 40 20% 98%;
+    --sidebar-accent: var(--soft-sand);
+    --sidebar-accent-foreground: var(--ink-black);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--kerala-green);
+
+    /* Hero Section - Kerala Dawn custom tokens */
+    --kerala-sky-top: 235 50% 8%;
+    --kerala-sky-mid: 255 35% 15%;
+    --kerala-sky-bottom: 25 60% 25%;
+    --kerala-sunrise: 42 95% 65%;
+    --kerala-sunrise-glow: 35 100% 70%;
+    --kerala-water: 210 40% 18%;
+    --kerala-silhouette: 230 30% 8%;
+    --kerala-silhouette-mid: 230 25% 12%;
+    
+    /* Glow and effects */
+    --dawn-glow: 42 90% 72%;
+    --dawn-glow-soft: 38 80% 65%;
+    --dawn-ripple: 42 85% 70%;
+    --neural-line: 230 35% 25%;
+    --neural-glow: 42 70% 55%;
+
+    /* Gradients - Enhanced golden spread */
+    --gradient-kerala-sky: linear-gradient(
+      180deg,
+      hsl(235 50% 8%) 0%,
+      hsl(250 40% 12%) 25%,
+      hsl(30 50% 20%) 55%,
+      hsl(38 70% 35%) 75%,
+      hsl(42 95% 55%) 90%,
+      hsl(45 100% 65%) 100%
+    );
+    
+    --gradient-glow: radial-gradient(
+      circle,
+      hsl(45 95% 70% / 0.5) 0%,
+      hsl(40 90% 65% / 0.3) 40%,
+      hsl(35 80% 60% / 0.1) 60%,
+      transparent 75%
+    );
+  }
+
+  .dark {
+    --background: 220 50% 8%;
+    --foreground: 40 20% 95%;
+
+    --card: 220 45% 12%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 220 45% 12%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: var(--kerala-green);
+    --primary-foreground: 40 20% 98%;
+
+    --secondary: 220 40% 20%;
+    --secondary-foreground: 40 20% 95%;
+
+    --muted: 220 35% 18%;
+    --muted-foreground: 40 10% 65%;
+
+    --accent: var(--sunrise-gold);
+    --accent-foreground: var(--ink-black);
+
+    --border: 220 30% 20%;
+    --input: 220 30% 20%;
+    --ring: var(--kerala-green);
+
+    /* Hero Section - Kerala Dawn custom tokens (dark mode) */
+    --kerala-sky-top: 235 50% 8%;
+    --kerala-sky-mid: 255 35% 15%;
+    --kerala-sky-bottom: 25 60% 25%;
+    --kerala-sunrise: 42 95% 65%;
+    --kerala-sunrise-glow: 35 100% 70%;
+    --kerala-water: 210 40% 18%;
+    --kerala-silhouette: 230 30% 8%;
+    --kerala-silhouette-mid: 230 25% 12%;
+    
+    /* Glow and effects (dark mode) */
+    --dawn-glow: 42 90% 72%;
+    --dawn-glow-soft: 38 80% 65%;
+    --dawn-ripple: 42 85% 70%;
+    --neural-line: 230 35% 25%;
+    --neural-glow: 42 70% 55%;
+
+    /* Gradients - Enhanced golden spread (dark mode) */
+    --gradient-kerala-sky: linear-gradient(
+      180deg,
+      hsl(235 50% 8%) 0%,
+      hsl(250 40% 12%) 25%,
+      hsl(30 50% 20%) 55%,
+      hsl(38 70% 35%) 75%,
+      hsl(42 95% 55%) 90%,
+      hsl(45 100% 65%) 100%
+    );
+    
+    --gradient-glow: radial-gradient(
+      circle,
+      hsl(45 95% 70% / 0.5) 0%,
+      hsl(40 90% 65% / 0.3) 40%,
+      hsl(35 80% 60% / 0.1) 60%,
+      transparent 75%
+    );
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .kerala-card {
+    @apply bg-card rounded-2xl shadow-card p-6 border border-border/50;
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md rounded-2xl shadow-card p-6 border border-border/30;
+  }
+
+  .postcard {
+    @apply bg-card rounded-xl shadow-card overflow-hidden border-4 border-soft-sand transform hover:scale-105 transition-transform duration-300;
+  }
+
+  .firefly {
+    @apply absolute w-2 h-2 bg-firefly rounded-full animate-firefly;
+  }
+
+  .neural-line {
+    @apply stroke-kerala-green stroke-1 fill-none;
+  }
+
+  .story-text {
+    @apply text-lg leading-relaxed text-muted-foreground;
+  }
+
+  .malayalam-shadow {
+    @apply absolute text-[8rem] font-bold text-kerala-green/5 select-none pointer-events-none;
+  }
+
+  /* Hero Section - Kerala Dawn Styles */
+  /* Hero container */
+  .hero-kerala {
+    @apply relative w-full min-h-screen overflow-hidden;
+    background: hsl(var(--kerala-sky-top));
+  }
+
+  /* Sky gradient layer */
+  .kerala-sky {
+    @apply absolute inset-0;
+    background: var(--gradient-kerala-sky);
+    opacity: 0;
+    transition: opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .kerala-sky.revealed {
+    opacity: 1;
+  }
+
+  /* Sunrise line - Enhanced glow */
+  .sunrise-line {
+    @apply absolute left-0 right-0 pointer-events-none;
+    bottom: 18%;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(45 100% 70% / 0.5) 15%,
+      hsl(45 100% 75% / 1) 50%,
+      hsl(45 100% 70% / 0.5) 85%,
+      transparent 100%
+    );
+    box-shadow: 
+      0 0 40px 15px hsl(45 100% 70% / 0.5),
+      0 0 80px 30px hsl(42 95% 65% / 0.3),
+      0 0 120px 50px hsl(38 90% 60% / 0.15);
+    opacity: 0;
+    transform: scaleX(0);
+    transition: 
+      opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sunrise-line.revealed {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  /* Ambient sunrise glow overlay */
+  .sunrise-glow {
+    @apply absolute left-0 right-0 bottom-0 pointer-events-none;
+    height: 50%;
+    background: radial-gradient(
+      ellipse 120% 60% at 50% 100%,
+      hsl(42 95% 65% / 0.25) 0%,
+      hsl(38 80% 55% / 0.15) 30%,
+      hsl(30 60% 40% / 0.08) 50%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+  }
+
+  .sunrise-glow.revealed {
+    opacity: 1;
+  }
+
+  /* SVG layer base styles */
+  .kerala-layer {
+    @apply absolute inset-0 pointer-events-none;
+    will-change: transform;
+  }
+
+  .kerala-bg-layer {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: 
+      opacity 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s,
+      transform 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+  }
+
+  .kerala-mid-layer {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 
+      opacity 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s,
+      transform 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+  }
+
+  .kerala-fg-layer {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: 
+      opacity 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.7s,
+      transform 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.7s;
+  }
+
+  .kerala-layer.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Cursor glow effect - enhanced visibility */
+  .cursor-glow {
+    @apply pointer-events-none fixed rounded-full;
+    background: var(--gradient-glow);
+    filter: blur(20px);
+    mix-blend-mode: screen;
+    will-change: transform;
+    opacity: 0;
+    transition: opacity 0.4s ease-out, transform 0.1s ease-out;
+  }
+
+  .cursor-glow.visible {
+    opacity: 1;
+  }
+
+  /* Neural lines layer */
+  .neural-layer {
+    @apply absolute inset-0 pointer-events-none;
+    will-change: transform;
+    opacity: 0;
+    transition: opacity 2s ease-out 1.5s;
+  }
+
+  .neural-layer.revealed {
+    opacity: 0.25;
+  }
+
+  /* Ripple canvas */
+  .ripple-canvas {
+    @apply absolute inset-0 pointer-events-none;
+  }
+
+  /* Motion toggle button */
+  .motion-toggle {
+    @apply absolute top-4 right-4 z-50 px-4 py-2 rounded-lg;
+    @apply bg-secondary/70 backdrop-blur-md;
+    @apply text-secondary-foreground text-sm font-medium;
+    @apply border border-border/40;
+    @apply transition-all duration-300;
+    @apply hover:bg-secondary/90 hover:border-primary/30;
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+    font-family: system-ui, sans-serif;
+  }
+
+  .motion-toggle[data-active="true"] {
+    @apply bg-primary/15 border-primary/40 text-primary;
+  }
+
+  /* Hero content */
+  .hero-content {
+    @apply relative z-20 flex flex-col items-center justify-center min-h-screen px-6;
+    padding-bottom: 15%;
+  }
+
+  .hero-eyebrow {
+    @apply text-sm md:text-base tracking-[0.3em] uppercase mb-4;
+    color: hsl(var(--dawn-glow-soft));
+    opacity: 0;
+    transform: translateY(20px);
+    font-family: system-ui, sans-serif;
+    letter-spacing: 0.25em;
+  }
+
+  .hero-eyebrow.revealed {
+    opacity: 0.8;
+    transform: translateY(0);
+    transition: 
+      opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1) 2.8s,
+      transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 2.8s;
+  }
+
+  .hero-title {
+    @apply text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-center;
+    @apply leading-[1.1];
+    background: linear-gradient(
+      180deg,
+      hsl(var(--foreground)) 0%,
+      hsl(var(--foreground) / 0.85) 50%,
+      hsl(var(--dawn-glow) / 0.9) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    transform: translateY(30px);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .hero-title.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 
+      opacity 1.5s cubic-bezier(0.22, 1, 0.36, 1) 3s,
+      transform 1.5s cubic-bezier(0.22, 1, 0.36, 1) 3s;
+  }
+
+  .hero-subtitle {
+    @apply mt-6 text-lg md:text-xl max-w-xl text-center leading-relaxed;
+    color: hsl(var(--muted-foreground));
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .hero-subtitle.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 
+      opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1) 3.3s,
+      transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 3.3s;
+  }
+
+  .hero-cta {
+    @apply mt-10 px-8 py-4 rounded-xl;
+    @apply bg-primary/90 text-primary-foreground font-medium;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    @apply hover:bg-primary hover:shadow-[0_0_50px_hsl(var(--dawn-glow)/0.35)];
+    @apply hover:scale-105;
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+    font-family: system-ui, sans-serif;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .hero-cta.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 
+      opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 3.6s,
+      transform 1s cubic-bezier(0.22, 1, 0.36, 1) 3.6s;
+  }
+}
+
+@layer utilities {
+  .text-gradient-kerala {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-kerala-green to-backwater-blue;
+  }
+
+  .text-gradient-sunrise {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-sunrise-gold to-sunrise-orange;
+  }
+
+  .bg-gradient-sunrise {
+    background: var(--gradient-sunrise);
+  }
+
+  .bg-gradient-backwater {
+    background: var(--gradient-backwater);
+  }
+
+  .bg-gradient-night {
+    background: var(--gradient-night);
+  }
+
+  .bg-gradient-sand {
+    background: var(--gradient-sand);
+  }
+
+  .bg-gradient-hero-dark {
+    background: var(--gradient-hero-dark);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-glow-green {
+    box-shadow: var(--shadow-glow-green);
+  }
+
+  .shadow-glow-gold {
+    box-shadow: var(--shadow-glow-gold);
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes firefly {
+  0%, 100% { opacity: 0.3; transform: translateY(0) translateX(0); }
+  25% { opacity: 1; transform: translateY(-20px) translateX(10px); }
+  50% { opacity: 0.5; transform: translateY(-10px) translateX(-5px); }
+  75% { opacity: 0.8; transform: translateY(-30px) translateX(15px); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes sunrise {
+  0% { opacity: 0; transform: scaleX(0); }
+  50% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes grow {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--kerala-green) / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(var(--kerala-green) / 0.6); }
+}
+
+@keyframes page-flip {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(-180deg); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.animate-firefly {
+  animation: firefly 4s ease-in-out infinite;
+}
+
+.animate-ripple {
+  animation: ripple 1.5s ease-out;
+}
+
+.animate-sunrise {
+  animation: sunrise 2s ease-out forwards;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+.animate-grow {
+  animation: grow 0.5s ease-out forwards;
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Hero Section Animations */
+@keyframes neural-breathe {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.25;
+    transform: scale(1.015);
+  }
+}
+
+.animate-neural-breathe {
+  animation: neural-breathe 6s ease-in-out infinite;
+}
+
+/* Subtle water shimmer */
+@keyframes water-shimmer {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-water-shimmer {
+  animation: water-shimmer 4s ease-in-out infinite;
+}
+
+/* Scroll animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Watercolor effect */
+.watercolor-bg {
+  position: relative;
+}
+
+.watercolor-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, hsl(var(--backwater-blue) / 0.2) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, hsl(var(--kerala-green) / 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 50%, hsl(var(--soft-sand) / 0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Cork board texture */
+.cork-board {
+  background-color: hsl(var(--soft-sand));
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4c4a8' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
