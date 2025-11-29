@@ -1,3 +1,100 @@
+# AI Kerala Stories
+
+A responsive, animated marketing site showcasing community learning impact across Kerala — built with Vite, React (TypeScript), Tailwind CSS and Framer Motion.
+
+## Key Features
+- Interactive SVG map of Kerala with animated nodes and popups (Framer Motion).
+- Modular UI components and sections for fast iteration (`src/components`).
+- Tailwind CSS utility-driven styling with custom tokens and themes.
+- Vite-powered dev server and fast HMR for quick development.
+
+## Tech Stack
+- Framework: React + TypeScript
+- Bundler / Dev: Vite
+- Styling: Tailwind CSS
+- Animation: Framer Motion
+- Linting: ESLint (project contains `eslint.config.js`)
+
+## Prerequisites
+- Node.js v18+ (recommended) and npm or a compatible package manager (pnpm, bun).
+- A modern browser for local preview.
+
+## Quick Start (Windows PowerShell)
+Clone the repo and install dependencies:
+
+```
+git clone https://github.com/Sandra07alex/ai-kerala-stories-main.git
+cd "ai-kerala-stories-main"
+npm install
+```
+
+Run the development server:
+
+```
+npm run dev
+```
+
+Build for production:
+
+```
+npm run build
+
+# preview the production build locally
+npm run preview
+```
+
+If your project uses a different package manager, replace `npm` with `pnpm` or `yarn` as needed.
+
+## Project Structure (high level)
+- `src/` — source code
+  - `App.tsx`, `main.tsx` — app entry and routing
+  - `components/` — UI primitives and section components
+    - `sections/` — page sections (e.g. `ImpactMapSection.tsx`)
+    - `ui/` — small reusable UI primitives (buttons, dialog, cards, etc.)
+  - `hooks/` — custom hooks
+  - `lib/` — utilities
+  - `pages/` — pages (index, 404)
+- `public/` — static assets
+- `package.json` — scripts & dependencies
+
+## Important Files
+- `src/components/sections/ImpactMapSection.tsx` — interactive Kerala map using SVG + Framer Motion.  
+- `tailwind.config.ts` — Tailwind configuration and theme tokens.  
+- `vite.config.ts` — Vite configuration.  
+
+## Styling & Theming
+This project uses Tailwind CSS with custom tokens (see `tailwind.config.ts`). Update theme colors and tokens in that file to keep visual consistency.
+
+## Animations
+Framer Motion is used for entrance animations and interactive transitions. See `ImpactMapSection.tsx` for an example combining `motion` elements with SVG.
+
+## Accessibility
+Keep interactive elements keyboard-accessible and add appropriate `aria-*` attributes when extending components or adding new interactive sections.
+
+## Deployment
+This repository is already set up for static deployments (Vite build output). Good choices:
+- Vercel: push to the main branch and Vercel will detect the Vite project.
+- Netlify: set the build command to `npm run build` and publish the `dist/` folder.
+
+## Contributing
+- Fork the repo and open a pull request with a clear description of changes.
+- For new components, add them under `src/components/ui` and re-use existing tokens.
+- Keep commits small and focused; follow conventional commits if you prefer.
+
+## Troubleshooting
+- If styles don't update, ensure Tailwind is running and restart the dev server.  
+- If animations stutter, check browser devtools for heavy rendering or large re-renders.
+
+## Notes & Next Steps
+- Add a `LICENSE` file if you want to publish this project (e.g., `MIT`).  
+- Consider adding unit or visual regression tests for critical UI sections.  
+- Add a short CONTRIBUTING guide and issue templates to streamline collaboration.
+
+---
+_If you'd like, I can:_
+- Run the project locally and verify `npm run dev` works.  
+- Add a `CONTRIBUTING.md` or `LICENSE` file.  
+- Extract reusable map logic into a small hook or component for reuse.
 AI Kerala Stories — Vite + React
 
 This repository contains a Vite + React (TypeScript) site built with Tailwind and shadcn components.

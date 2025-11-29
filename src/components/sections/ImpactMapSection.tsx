@@ -26,6 +26,34 @@ const ImpactMapSection = () => {
   const totalLearners = locations.reduce((sum, loc) => sum + loc.learners, 0);
   const totalWorkshops = locations.reduce((sum, loc) => sum + loc.workshops, 0);
 
+  // Reusable Kerala boundary path (used for outline, fill and clipping)
+  const keralaPathD = `M 12,2 
+                 C 14,2.5 16.8,4.5 19.2,7.5
+                 C 21.6,10.5 21.8,14 21.7,18
+                 C 21.6,22 21.4,26.5 21.9,31
+                 C 22.4,35.5 22.3,40 22.7,44.5
+                 C 23.1,49 23.2,53.5 23.3,58
+                 C 23.4,62.5 23.5,67 23.9,71.5
+                 C 24.3,76 24.1,80.5 24.5,85
+                 C 24.9,89.5 24.8,94 25.1,98.5
+                 C 25.4,103 25.3,107.5 25.5,111
+                 C 25.5,114 25.2,116 24,117
+                 C 22.8,118 20.5,118 18,117.5
+                 C 15.5,117 13.5,115.5 12,113.5
+                 C 10.5,111.5 9.5,109 9,106
+                 C 8.5,103 8,99.5 7.5,96
+                 C 7,92.5 6.5,89 6,85.5
+                 C 5.5,82 5,78.5 4.5,75
+                 C 4,71.5 3.5,68 3,64.5
+                 C 2.5,61 2,57.5 1.5,54
+                 C 1,50.5 0.5,47 0,43.5
+                 C 0,40 0,36.5 0,33
+                 C 0,29.5 0.5,26 1,22.5
+                 C 1.5,19 2,15.5 2.5,12
+                 C 3,8.5 4,5.5 5.5,3.5
+                 C 7,1.5 9.5,1 11.5,1.5
+                 C 11.75,1.75 12,1.75 12,2 Z`;
+
   return (
     <section className="relative py-24 bg-gradient-night overflow-hidden">
       {/* Stars background */}
@@ -65,44 +93,7 @@ const ImpactMapSection = () => {
           </p>
         </motion.div>
 
-        {/* Stats row */}
-        <div className="flex justify-center gap-8 md:gap-16 mb-12">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="text-4xl md:text-5xl font-display font-bold text-kerala-green">
-              {totalLearners.toLocaleString()}+
-            </div>
-            <div className="text-backwater-blue/60 text-sm">Learners</div>
-          </motion.div>
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            <div className="text-4xl md:text-5xl font-display font-bold text-sunrise-gold">
-              {totalWorkshops}+
-            </div>
-            <div className="text-backwater-blue/60 text-sm">Workshops</div>
-          </motion.div>
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <div className="text-4xl md:text-5xl font-display font-bold text-backwater-blue">
-              14
-            </div>
-            <div className="text-backwater-blue/60 text-sm">Districts</div>
-          </motion.div>
-        </div>
+        {/* Stats were originally centered above the map. They are now positioned to the right of the map (keeps same styling). */}
 
         {/* Map container */}
         <div className="relative max-w-2xl mx-auto">
@@ -112,32 +103,7 @@ const ImpactMapSection = () => {
             {/* Path: narrow vertical strip, wider in middle, undulating western coast (right side), straighter eastern border (left side) */}
             {/* Western coast has detailed undulations with curves bulging outward and inward, eastern border is relatively straight */}
             <motion.path
-              d="M 12,2 
-                 C 14,2.5 16.8,4.5 19.2,7.5
-                 C 21.6,10.5 21.8,14 21.7,18
-                 C 21.6,22 21.4,26.5 21.9,31
-                 C 22.4,35.5 22.3,40 22.7,44.5
-                 C 23.1,49 23.2,53.5 23.3,58
-                 C 23.4,62.5 23.5,67 23.9,71.5
-                 C 24.3,76 24.1,80.5 24.5,85
-                 C 24.9,89.5 24.8,94 25.1,98.5
-                 C 25.4,103 25.3,107.5 25.5,111
-                 C 25.5,114 25.2,116 24,117
-                 C 22.8,118 20.5,118 18,117.5
-                 C 15.5,117 13.5,115.5 12,113.5
-                 C 10.5,111.5 9.5,109 9,106
-                 C 8.5,103 8,99.5 7.5,96
-                 C 7,92.5 6.5,89 6,85.5
-                 C 5.5,82 5,78.5 4.5,75
-                 C 4,71.5 3.5,68 3,64.5
-                 C 2.5,61 2,57.5 1.5,54
-                 C 1,50.5 0.5,47 0,43.5
-                 C 0,40 0,36.5 0,33
-                 C 0,29.5 0.5,26 1,22.5
-                 C 1.5,19 2,15.5 2.5,12
-                 C 3,8.5 4,5.5 5.5,3.5
-                 C 7,1.5 9.5,1 11.5,1.5
-                 C 11.75,1.75 12,1.75 12,2 Z"
+              d={keralaPathD}
               fill="none"
               stroke="hsl(var(--kerala-green))"
               strokeWidth="1.5"
@@ -149,32 +115,7 @@ const ImpactMapSection = () => {
 
             {/* Inner glow fill */}
             <motion.path
-              d="M 12,2 
-                 C 14,2.5 16.8,4.5 19.2,7.5
-                 C 21.6,10.5 21.8,14 21.7,18
-                 C 21.6,22 21.4,26.5 21.9,31
-                 C 22.4,35.5 22.3,40 22.7,44.5
-                 C 23.1,49 23.2,53.5 23.3,58
-                 C 23.4,62.5 23.5,67 23.9,71.5
-                 C 24.3,76 24.1,80.5 24.5,85
-                 C 24.9,89.5 24.8,94 25.1,98.5
-                 C 25.4,103 25.3,107.5 25.5,111
-                 C 25.5,114 25.2,116 24,117
-                 C 22.8,118 20.5,118 18,117.5
-                 C 15.5,117 13.5,115.5 12,113.5
-                 C 10.5,111.5 9.5,109 9,106
-                 C 8.5,103 8,99.5 7.5,96
-                 C 7,92.5 6.5,89 6,85.5
-                 C 5.5,82 5,78.5 4.5,75
-                 C 4,71.5 3.5,68 3,64.5
-                 C 2.5,61 2,57.5 1.5,54
-                 C 1,50.5 0.5,47 0,43.5
-                 C 0,40 0,36.5 0,33
-                 C 0,29.5 0.5,26 1,22.5
-                 C 1.5,19 2,15.5 2.5,12
-                 C 3,8.5 4,5.5 5.5,3.5
-                 C 7,1.5 9.5,1 11.5,1.5
-                 C 11.75,1.75 12,1.75 12,2 Z"
+              d={keralaPathD}
               fill="url(#keralaGradient)"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 0.3 }}
@@ -264,16 +205,62 @@ const ImpactMapSection = () => {
               </motion.g>
             ))}
 
-            {/* Gradient definition */}
+            {/* Gradient and clip definition */}
             <defs>
               <radialGradient id="keralaGradient" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stopColor="hsl(var(--kerala-green))" stopOpacity="0.4" />
                 <stop offset="100%" stopColor="hsl(var(--kerala-green))" stopOpacity="0" />
               </radialGradient>
+
+              {/* Clip path ensures network and nodes remain inside Kerala boundary */}
+              <clipPath id="keralaClip">
+                <path d={keralaPathD} />
+              </clipPath>
             </defs>
           </svg>
 
           {/* Location info popup */}
+
+          {/* Stats (moved to the right side of the map) */}
+          <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex flex-col items-end gap-6 md:gap-8 z-20">
+            <motion.div
+              className="text-right"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-4xl md:text-5xl font-display font-bold text-kerala-green">
+                {totalLearners.toLocaleString()}+
+              </div>
+              <div className="text-backwater-blue/60 text-sm">Learners</div>
+            </motion.div>
+
+            <motion.div
+              className="text-right"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <div className="text-4xl md:text-5xl font-display font-bold text-sunrise-gold">
+                {totalWorkshops}+
+              </div>
+              <div className="text-backwater-blue/60 text-sm">Workshops</div>
+            </motion.div>
+
+            <motion.div
+              className="text-right"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="text-4xl md:text-5xl font-display font-bold text-backwater-blue">
+                14
+              </div>
+              <div className="text-backwater-blue/60 text-sm">Districts</div>
+            </motion.div>
+          </div>
           <AnimatePresence>
             {activeLocation && (
               <motion.div

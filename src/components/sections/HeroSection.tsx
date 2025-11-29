@@ -634,10 +634,11 @@ export default function HeroSection() {
       {/* Hero content */}
       <div className="hero-content">
         <span className={`hero-eyebrow ${revealed ? "revealed" : ""}`}>
-          Embracing Tomorrow
+          AI FOR EVERYONE
         </span>
         <h1 className={`hero-title ${revealed ? "revealed" : ""}`}>
-          The Dawn of AI<br />in Kerala
+          <span style={{ color: "white", WebkitTextFillColor: "white" }}>The Dawn of AI</span>
+          <br />in Kerala
         </h1>
         <p className={`hero-subtitle ${revealed ? "revealed" : ""}`}>
           Where ancient wisdom meets infinite possibility.<br />
